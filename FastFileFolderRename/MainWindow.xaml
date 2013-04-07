@@ -1,0 +1,62 @@
+﻿<Window x:Class="FastFileFolderRename.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:system="clr-namespace:System;assembly=mscorlib"
+        xmlns:fastFileFolderRename="clr-namespace:FastFileFolderRename"
+        Title="KsWare's Fast File and Folder Rename" Height="350" Width="525">
+    <DockPanel>
+		<StackPanel DockPanel.Dock="Top">
+			<DockPanel >
+				<Label Content="Path:" 
+					AllowDrop="True" DragOver="_pathTextBox_OnDragOver" Drop="_pathTextBox_OnDrop"
+				/>
+				<TextBox x:Name="_pathTextBox" 
+					TextChanged="_pathTextBox_OnTextChanged" KeyDown="_pathTextBox_OnKeyDown" 
+					AllowDrop="True" PreviewDragOver="_pathTextBox_OnDragOver" PreviewDrop="_pathTextBox_OnDrop"
+				/>
+			</DockPanel>			
+		</StackPanel>
+		<ScrollViewer Margin="0 6 0 0">
+			<ItemsControl x:Name="_editor" >
+				<ItemsControl.ItemTemplate>
+					<DataTemplate DataType="{x:Type fastFileFolderRename:FileSystemObjectVM}">
+						<TextBox 
+							x:Name="ItemName"
+							Text="{Binding Name}" 
+							Padding="3 0 3 0" Margin="0 0 0 0" BorderThickness="0" 
+							PreviewKeyDown="UIElement_OnPreviewKeyDown" TextChanged="TextBoxBase_OnTextChanged"
+						>
+						</TextBox>
+						<DataTemplate.Triggers>
+							<DataTrigger Binding="{Binding NameIsValid}" Value="False">
+								<Setter TargetName="ItemName" Property="Foreground" Value="Red"/>
+							</DataTrigger>
+							<DataTrigger Binding="{Binding IsDirectory}" Value="True">
+								<Setter TargetName="ItemName" Property="Background" Value="#FFffffee"/>
+							</DataTrigger>
+							<DataTrigger Binding="{Binding IsExisting}" Value="False">
+								<Setter TargetName="ItemName" Property="Foreground" Value="LightGray"/>
+								<Setter TargetName="ItemName" Property="TextDecorations" >
+									<Setter.Value>
+										<TextDecorationCollection>
+											<TextDecoration Location="Strikethrough" PenOffset="0">
+												<TextDecoration.Pen>
+													<Pen Brush="LightGray" Thickness="1"/>
+												</TextDecoration.Pen>
+											</TextDecoration>
+											<TextDecoration Location="Strikethrough" PenOffset="0.5">
+												<TextDecoration.Pen>
+													<Pen Brush="LightGray" Thickness="1"/>
+												</TextDecoration.Pen>
+											</TextDecoration>
+										</TextDecorationCollection>
+									</Setter.Value>
+								</Setter>
+							</DataTrigger>
+						</DataTemplate.Triggers>
+					</DataTemplate>
+				</ItemsControl.ItemTemplate>
+			</ItemsControl>
+			
+		</ScrollViewer>
+    </DockPanel>
+</Window>

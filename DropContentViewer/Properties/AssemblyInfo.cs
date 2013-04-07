@@ -10,9 +10,9 @@ using System.Windows;
 [assembly: AssemblyTitle("DropContentViewer")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Carl Zeiss AG")]
+[assembly: AssemblyCompany("KsWare")]
 [assembly: AssemblyProduct("DropContentViewer")]
-[assembly: AssemblyCopyright("Copyright © Carl Zeiss AG 2013")]
+[assembly: AssemblyCopyright("Copyright © KsWare 2013")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

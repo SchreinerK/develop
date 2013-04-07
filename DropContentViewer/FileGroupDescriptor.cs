@@ -1,16 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Runtime.InteropServices.ComTypes;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 
 //http://stackoverflow.com/questions/1845654/how-to-use-filegroupdescriptor-to-drag-file-to-explorer-c-sharp
 
-namespace DropContentViewer
+namespace KsWare.DropContentViewer
 {
 
 	internal class FileGroupDescriptor

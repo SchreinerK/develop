@@ -1,16 +1,18 @@
 ﻿<Window 
-	x:Class="DropContentViewer.MainWindow"
+	x:Class="KsWare.DropContentViewer.MainWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:dropContentViewer="clr-namespace:DropContentViewer"
-	Title="MainWindow" Height="350" Width="525"
-	DataContext="{x:Static dropContentViewer:MainWindow.This}"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:dropContentViewer2="clr-namespace:KsWare.DropContentViewer"
+	Title="KsWare's Drop&amp;Clipboard Content Viewer" Height="350" Width="525"
+	DataContext="{x:Static dropContentViewer2:MainWindow.This}"
 	>
     <DockPanel>
         <StackPanel DockPanel.Dock="Top">
 			<StackPanel Orientation="Horizontal">
-				<Label Content="Drop Here" BorderThickness="1" BorderBrush="Blue" DragOver="UIElement_OnDragOver" Drop="UIElement_OnDrop" AllowDrop="True" Width="123"/>
+				<Label Content="Drop Here" BorderThickness="1" BorderBrush="Blue" DragOver="UIElement_OnDragOver" Drop="UIElement_OnDrop" AllowDrop="True" Width="100" HorizontalContentAlignment="Center"/>
+				<TextBlock Text=" -or- " VerticalAlignment="Center"/>
 				<Button Content="Read Clipboard" Click="AtReadClipboardOnClick"/>
-				<CheckBox x:Name="_pollIntervallCheckBox" VerticalAlignment="Center" VerticalContentAlignment="Center" Checked="AtPollChanged" Unchecked="AtPollChanged">
+				<CheckBox x:Name="_pollIntervallCheckBox" VerticalAlignment="Center" VerticalContentAlignment="Center" Checked="AtPollChanged" Unchecked="AtPollChanged" Margin="4 0 0 0">
 					<StackPanel Orientation="Horizontal">
 						<TextBlock Text="Poll every" VerticalAlignment="Center"/>
 						<TextBox x:Name="_pollIntervallTextBox" Text="500" />
@@ -37,7 +39,7 @@
 			<TabItem Header="Details">
 				<ListBox ItemsSource="{Binding OverViewItems}">
 					<ListBox.ItemTemplate>
-						<DataTemplate DataType="{x:Type dropContentViewer:OverViewItem}">
+						<DataTemplate DataType="{x:Type dropContentViewer2:OverViewItem}">
 							<StackPanel Margin="0 4 0 0">
 								<StackPanel Orientation="Horizontal">
 									<TextBox Text="{Binding Format, Mode=OneWay}" FontWeight="Bold" Margin="0" BorderThickness="0" Padding="0"/>
